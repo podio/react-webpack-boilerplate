@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/srn/react-webpack-boilerplate",
   "dependencies": {
+    "PlatformJS": "git+ssh://git@github.com:podio/platformJS.git",
+    "bluebird": "^2.3.5",
     "compression": "^1.1.0",
     "css-loader": "^0.8.0",
     "ejs": "^1.0.0",
@@ -38,8 +40,7 @@
     "react-mini-router": "^0.2.6",
     "sass-loader": "^0.2.0",
     "style-loader": "^0.8.0",
-    "webpack": "1.4.13",
-    "bluebird": "^2.3.5"
+    "webpack": "1.4.13"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
