@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 
 require('./common-styles');
@@ -10,4 +12,4 @@ var ContactsComponent = React.createClass({
   }
 });
 
-React.renderComponent(<ContactsComponent />, document.body);
+React.render(<ContactsComponent />, document.body);

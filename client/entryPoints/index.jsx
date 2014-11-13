@@ -1,3 +1,5 @@
+'use strict';
+
 require('./common-styles');
 
 var React = require('react');
@@ -36,6 +38,4 @@ var MainComponent = React.createClass({
   }
 });
 
-React.renderComponent(<MainComponent history={true} />, document.body);
-
-module.exports = MainComponent;
+React.render(<MainComponent history={true} />, document.body);

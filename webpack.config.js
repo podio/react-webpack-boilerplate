@@ -1,5 +1,19 @@
 var webpack = require("webpack");
 var path = require('path');
+var fs = require('fs');
+
+var merge = require('merge');
+
+var jshintrc = merge(fs.readFileSync('./.jshintrc', {encoding: 'utf8'}), {
+  // jshint errors are displayed by default as warnings
+  // set emitErrors to true to display them as errors
+  emitErrors: true,
+
+  // jshint to not interrupt the compilation
+  // if you want any file with jshint errors to fail
+  // set failOnHint to true
+  failOnHint: true
+});
 
 var currentEnv = process.env['NODE_ENV'];
 
@@ -24,7 +38,8 @@ var addDevServerEntryPoint = function (entryPoint) {
 
 var entry = {
   index: addDevServerEntryPoint('./client/entryPoints/index'),
-  contacts: addDevServerEntryPoint('./client/entryPoints/contacts')
+  contacts: addDevServerEntryPoint('./client/entryPoints/contacts'),
+  styleguide: addDevServerEntryPoint('./client/entryPoints/styleguide')
 };
 
 if (currentEnv !== 'test') {
@@ -46,9 +61,10 @@ if (env.production === false) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
-var jsxLoaders = ['jsx?insertPragma=React.DOM'];
+var jsxLoaders = ['jsx'];
 
-if (env.production === false) {
+if (env.production === false && env.test === false) {
+  jsxLoaders.unshift('jshint-loader');
   jsxLoaders.unshift('react-hot');
 }
 
@@ -69,18 +85,33 @@ var exports = {
 
   plugins: plugins,
 
+  // http://webpack.github.io/docs/loaders.html#loader-order
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loader: "style!css!sass?outputStyle=expanded"
+        loaders: [
+          "style",
+          "css",
+          "autoprefixer?browsers=last 2 version",
+          "sass?outputStyle=expanded"
+        ]
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          "style",
+          "css"
+        ]
       },
       {
         test: /\.jsx$/,
         loaders: jsxLoaders
       }
     ]
-  }
+  },
+
+  jshint: jshintrc
 };
 
 if (env.production) {

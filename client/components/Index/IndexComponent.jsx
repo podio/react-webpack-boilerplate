@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var PlatformJS = require('PlatformJS');
 
@@ -83,7 +85,6 @@ var IndexComponent = React.createClass({
             return <li key={index}>item {item}</li>
           })}
         </ul>
-
         {this.showClientSideAuthExample()}
       </section>
     );

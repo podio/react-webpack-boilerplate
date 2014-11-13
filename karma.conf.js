@@ -67,6 +67,12 @@ module.exports = function(config) {
     },
 
 
+    junitReporter: {
+      outputFile: 'test/reports/test-results.xml',
+      suite: ''
+    },
+
+
     // web server port
     port: 9876,
 
@@ -98,7 +104,8 @@ module.exports = function(config) {
       require("karma-jasmine"),
       require("karma-phantomjs-launcher"),
       require("karma-coverage"),
-      require("karma-webpack")
+      require("karma-webpack"),
+      require("karma-junit-reporter")
     ]
   });
 };

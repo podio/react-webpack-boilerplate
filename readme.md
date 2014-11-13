@@ -21,12 +21,37 @@ $ node index
 
 Go to [http://localhost:3001](http://localhost:3001) and see the magic happen.
 
+## Add entry point
+
+* Create new file in `/client/entryPoints`
+* Add a new view file in `/views`
+* Add a new entry in `webpack.config.js`
+* Restart the development server (required whenever you make changes to webpack.config.js)
+
 ## Production
+
+Run this command to output the current environment:
+
+```sh
+export | grep NODE_ENV
+```
 
 If you want to run the project in production, set the `NODE_ENV` environment variable to `production`.
 
 ```sh
 export NODE_ENV=production
+```
+
+Run this command to generate the required bundles for production:
+
+```sh
+npm run-script bundle
+```
+
+Run this command to switch back to development environment:
+
+```sh
+export NODE_ENV=development
 ```
 
 ## Tests

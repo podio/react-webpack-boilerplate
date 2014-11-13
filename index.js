@@ -32,6 +32,7 @@ var retrieveCommonFileData = function (filePath) {
 };
 
 app.get('/*', function(req, res) {
+  var split = req.url.split('/')[1];
   /*
   var common = retrieveCommonFileData('client/build/common.js');
 
@@ -50,7 +51,7 @@ app.get('/*', function(req, res) {
   res.render('index', {
     locals: {
       env: env,
-      entryPoint: 'index'
+      entryPoint: split || 'index'
     }
   });
 });
