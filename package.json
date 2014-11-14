@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/srn/react-webpack-boilerplate",
   "dependencies": {
+    "PlatformJS": "git+ssh://git@github.com:podio/platformJS.git",
     "compression": "^1.1.0",
     "css-loader": "^0.8.0",
     "ejs": "^1.0.0",
