@@ -38,8 +38,7 @@ var addDevServerEntryPoint = function (entryPoint) {
 
 var entry = {
   index: addDevServerEntryPoint('./client/entryPoints/index'),
-  contacts: addDevServerEntryPoint('./client/entryPoints/contacts'),
-  styleguide: addDevServerEntryPoint('./client/entryPoints/styleguide')
+  contacts: addDevServerEntryPoint('./client/entryPoints/contacts')
 };
 
 if (currentEnv !== 'test') {

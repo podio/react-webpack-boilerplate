@@ -82,7 +82,7 @@ var IndexComponent = React.createClass({
         Please take a look at this cool list of things:
         <ul ref="indexList" className="index-list">
           {this.props.items.map(function(item, index){
-            return <li key={index}>item {item}</li>
+            return <li key={index}>item {item}</li>;
           })}
         </ul>
         {this.showClientSideAuthExample()}
